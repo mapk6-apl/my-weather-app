@@ -1,0 +1,7 @@
+@import './components/NavBar/Navbar.css';
+@import './components/Container-Left/WeatherInfo.css';
+
+body{
+    background-color: rgb(66, 64, 64);
+    font-family: sans-serif;
+}
