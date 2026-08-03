@@ -1,4 +1,4 @@
-#dark-clouds-bg{
+#dark-clouds-bg {
     margin-top: 50px;
     width: 800px;
     height: 300px;
@@ -7,17 +7,19 @@
     position: absolute;
 }
 
-.screen-1-text{
+.screen-1-text {
     z-index: 1000;
     position: relative;
     font-weight: lighter;
 }
 
-.main-weather-screen{
+.main-weather-screen {
     margin-left: 10px;
-}   
+    display: flex;
+    flex-direction: column;
+}
 
-.screen-1-elements{
+.screen-1-elements {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,14 +30,15 @@
     box-sizing: border-box;
 }
 
-#high{
+#high {
     display: flex;
     flex-direction: row;
     gap: 10px;
     background-color: rgba(255, 255, 255, 0.2);
     width: 80px;
     border-radius: 38px;
-    padding: -8px 8px; /*top/bottom; left/right*/
+    padding: -8px 8px;
+    /*top/bottom; left/right*/
     z-index: 1000;
     position: relative;
     align-items: center;
@@ -44,14 +47,15 @@
     color: rgb(208, 204, 204);
 }
 
-#low{
+#low {
     display: flex;
     flex-direction: row;
     gap: 10px;
     background-color: rgba(255, 255, 255, 0.2);
     width: 80px;
     border-radius: 38px;
-    padding: -4px 8px; /*top/bottom; left/right*/
+    padding: -4px 8px;
+    /*top/bottom; left/right*/
     z-index: 1000;
     position: relative;
     align-items: center;
@@ -60,13 +64,13 @@
     color: rgb(208, 204, 204);
 }
 
-.high-low{
+.high-low {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-.message{
+.message {
     position: absolute;
     border: solid 1px rgba(255, 255, 255, 0.3);
     width: 170px;
@@ -85,28 +89,98 @@
     position: absolute;
 } */
 
-.screen-1{
+.screen-1 {
     position: relative;
     width: 800px;
     height: 450px;
     overflow: hidden;
 }
 
-.left-elements{
+.left-elements {
     position: relative;
     left: 30px;
     top: 40px;
 }
 
-.left-elements h1{
+.left-elements h1 {
     font-size: 80px;
     font-weight: lighter;
 }
 
-.left-elements h2{
+.left-elements h2 {
     margin-top: -50px;
 }
 
-.left-elements h3{
-   color: rgb(208, 204, 204);
+.left-elements h3 {
+    color: rgb(208, 204, 204);
+}
+
+#cloudy-img {
+    width: 30px;
+}
+
+.hourly-forecast,
+.now-hourly-forecast p {
+    color: white;
+    position: relative;
+}
+
+.screen-2 {
+    margin-top: -22px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    /* width: 55%; */
+    position: relative;
+    width: 800px;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.now-hourly-forecast {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.3);
+    /* this is so it has a glossy border around it*/
+}
+
+.hourly-forecast {
+    width: 60px;
+    margin-left: 20px;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 18px;
+}
+
+.rain-chance {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 27px;
+    font-size: 9px;
+    color: #00D2FF;
+    font-weight: bold;
+
+}
+
+.hourly-forecast-2 {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.3);
+        margin-top: 18px;
 }
