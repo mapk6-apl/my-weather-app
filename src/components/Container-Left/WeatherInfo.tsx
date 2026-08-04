@@ -127,9 +127,17 @@ export const WeatherInfo = () => {
             <div className='right-screens'>
                 <div className='screen-4'>
                     <div className='screen-4-top-content'>
-                        <Text variant='span'>Live Conditions</Text>
-                        <img src={'right.png'} alt='Right Arrow' id='right-arrow' />
+
+                        <div id='4-top-left-items'>
+                            <Text variant='span'>Live Conditions</Text>
+                        </div>
+
+                        <div id='4-top-right-items'>
+                            <img src={'right.png'} alt='Right Arrow' id='right-arrow' />
+                        </div>
+
                     </div>
+
                     <div className='screen-4-mid-content'>
                         <div className='precipitation'>
                             <img src={'top.png'} alt='Top Arrow' id='top-arrow' />
@@ -143,15 +151,19 @@ export const WeatherInfo = () => {
                     <div className='screen-4-line-graph'>
                         <img src={'line-graph.png'} alt='Precipitation Graph' id='line-graph' />
                     </div>
+
+                    <hr className='line-divider'></hr>
+
                     <div className='screen-4-bottom-content'>
-                        <hr className='line-divider'></hr>
 
                         <div className='humidity'>
                             <div className='humidity-left-items'>
                                 <img src={'humidity.png'} alt='Humidity Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='humidity-icon' />
-                                <Text variant='span'>78%</Text>
                             </div>
-                            <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>Humidity</Text>
+                            <div className='humidity-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>78%</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Humidity</Text>
+                            </div>
                         </div>
 
                         <div id='vertical-divider'></div>
@@ -159,9 +171,11 @@ export const WeatherInfo = () => {
                         <div className='wind'>
                             <div className='wind-left-items'>
                                 <img src={'wind.png'} alt='Wind Icon' style={{ width: '20px' }} id='wind-icon' />
-                                <Text variant='span'>12 km/h</Text>
                             </div>
-                            <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>Wind</Text>
+                            <div className='wind-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>12 km/h</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Wind</Text>
+                            </div>
                         </div>
 
                         <div id='vertical-divider'></div>
@@ -169,9 +183,11 @@ export const WeatherInfo = () => {
                         <div className='pressure'>
                             <div className='pressure-left-items'>
                                 <img src={'meter.png'} alt='Pressure Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='pressure-icon' />
-                                <Text variant='span'>1 kPa</Text>
                             </div>
-                            <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>Pressure</Text>
+                            <div className='pressure-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>1 kPa</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Pressure</Text>
+                            </div>
                         </div>
 
                     </div>
@@ -219,8 +235,14 @@ export const WeatherInfo = () => {
                         </div>
                     </div>
                 </div>
+                <div className='screen-6'>
+                    <Text variant='span' style={{ textAlign: 'left' }}>Wind Map</Text>
+                    <div className='wind-speed'>
+                        <Text variant='span' style={{ textAlign: 'left' }}>12 km/h</Text>
+                        <Text variant='span' style={{ textAlign: 'left' }}>Northwest</Text>
+                    </div>
+                </div>
             </div>
-
         </div>
     )
 }
