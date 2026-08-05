@@ -79,44 +79,44 @@ export const WeatherInfo = () => {
                     </div>
                 </div>
                 <div className='screen-3'>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Sun</Text>
                         <img src={'sun.png'} alt='Sunny Weather Icon' id='sunny-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>28&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>12&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Mon</Text>
                         <img src={'partly-cloudy.png'} alt='Partly Cloudy Weather Icon' id='partly-cloudy-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>26&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>11&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Tue</Text>
                         <img src={'cloudy.png'} alt='Cloudy Weather Icon' id='cloudy-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>27&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>12&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Wed</Text>
                         <img src={'rainy.png'} alt='Rainy Weather Icon' id='rainy-img' />
                         <Text variant='p' className='rain-chance'>60%</Text>
                         <Text variant='p' style={{ fontSize: '20px' }}>23&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>13&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Thur</Text>
                         <img src={'cloudy.png'} alt='Cloudy Weather Icon' id='cloudy-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>30&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>14&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Fri</Text>
                         <img src={'partly-cloudy.png'} alt='Parlty Cloudy Weather Icon' id='partly-cloudy-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>23&#176;</Text>
                         <Text variant='p' style={{ color: 'darkgray' }}>10&#176;</Text>
                     </div>
-                    <div className='hourly-forecast-2'>
+                    <div className='daily-forecast'>
                         <Text variant='p' style={{ fontSize: '16px' }}>Sat</Text>
                         <img src={'sun.png'} alt='Sunny Weather Icon' id='sunny-img' />
                         <Text variant='p' style={{ fontSize: '20px' }}>24&#176;</Text>
