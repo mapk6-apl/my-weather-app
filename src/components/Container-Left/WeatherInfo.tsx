@@ -11,10 +11,11 @@ export const WeatherInfo = () => {
                     <img src={darkClouds} alt='Dark Clouds Background' id='dark-clouds-bg' />
                     <div className='screen-1-elements'>
                         <div className='left-elements'>
-
-                            <Text variant='h1' style={{ color: 'white' }} className={'screen-1-text'}>18&#176;</Text>
-                            <Text variant='h2' style={{ color: 'white' }} className={'screen-1-text'}>Stormy</Text>
-                            <Text variant='h3' style={{ marginTop: '-15px' }} className={'screen-1-text'}>with partly cloudy</Text>
+                                <Text variant='h1' style={{ color: 'white', marginLeft: '-20px'}}>18&#176;</Text>
+                            <div id='left-two-texts'>
+                                <Text variant='h2' style={{ color: 'white' }} className={'screen-1-text'}>Stormy</Text>
+                                <Text variant='h3' style={{ marginTop: '-15px' }} className={'screen-1-text'}>with partly cloudy</Text>
+                            </div>
 
                             <div className='high-low'>
                                 <div id='high'>
@@ -241,6 +242,7 @@ export const WeatherInfo = () => {
                         <Text variant='span' style={{ textAlign: 'left' }}>12 km/h</Text>
                         <Text variant='span' style={{ textAlign: 'left' }}>Northwest</Text>
                     </div>
+                    <img src={'pin.png'} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
                 </div>
             </div>
         </div>
