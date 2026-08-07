@@ -2,10 +2,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import pinIcon from '../../assets/pin.png'
 import { Text } from '../../components/Text'
 
-// export type SearchbarProps = {
-//     ref: React.RefObject<HTMLInputElement | null>
-//     onSearch: () => void
-// }
 
 export const Navbar = () => {
 
@@ -19,6 +15,24 @@ export const Navbar = () => {
 
     const API_KEY = "88de1ac9434d7b7cb3bf0dc272400990"
 
+    const searchSectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const clickOutside = (event: MouseEvent) => {
+            if (searchSectionRef.current && !searchSectionRef.current.contains(event.target as Node)) {
+                setSuggestions([]);
+                setSearchQuery('');
+                toggleSearch(false)
+            }
+        };
+
+        document.addEventListener('mousedown', clickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', clickOutside);
+        };
+    }, []);
+
     useEffect(() => {
         if (searchQuery.length < 2) {
             setSuggestions([]); /*  */
@@ -30,9 +44,9 @@ export const Navbar = () => {
         const delayDebounceTime = setTimeout(async () => {
             try {
                 const response = await fetch(
-                    `https://openweathermap.org{searchQuery}&limit=5&appid=${API_KEY}` // URL/web address used to send an asynchronous request to OpenWeather API servers (to handle city name searches)
+                    `https://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=20&appid=${API_KEY}` // URL/web address used to send an asynchronous request to OpenWeather API servers (to handle city name searches)
                 );
-                
+
                 if (!response.ok) throw new Error('Network query fault');
 
                 const data = await response.json(); //extracts raw data from server and converts it into a usable JS object/array

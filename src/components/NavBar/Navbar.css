@@ -6,15 +6,13 @@
 
 #nav-search-icon{
     width: 15px;
+    height: 15px;
     filter: invert();
     background-color: grey;
-    border-radius: 20px;
+    border-radius: 50%;
     padding: 6px;
-    position: absolute;
-    right: 180px;
-    top: 24px;
-    z-index: 1000;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .nav-main{
@@ -23,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 20px 40px;
     box-sizing: border-box;
 }
 
@@ -35,25 +34,28 @@
     border-radius: 18px;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
     cursor: pointer;
-}
-
-#download-app-btn a{
 }
 
 .left-nav-content{
     display: flex;
     flex-direction: row;
-    gap: 25px;
-    padding-left: 40px;
+    align-items: center;
+    gap: 15px;
 }
 
 #location-text{
-    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#location-text h4{
+    margin: 0;
 }
 
 #location-text p{
-    margin-top: -15px;
+    margin-top: 4px 0 0 0;
 }
 
 .right-nav-content{
@@ -64,16 +66,51 @@
 }
 
 .search-bar{
-    position: relative;
+    background-color: grey;
     border-radius: 14px;
     background-color: grey;
     border: none;
     padding: 8px 12px;
+    color: white;
+    outline: none;
+    width: 180px;
 }
 
 .search-section{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 10px;
+}
+
+.search-input-section{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.suggestion-list{
+    position: absolute;
+    top: 100%; /* goes directly below search input field */
+    left: 0;
+    width: 240px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 6px 0;
+    margin-top: 6px;
+    list-style: none; /* strips unstyled browser list bullets */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+    z-index: 9999; /* so that dropdown is on not behind screen 1 and 4 */
+}
+
+.suggestion-item{
+    padding: 10px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.suggestion-item:hover{
+    color: cadetblue;
 }
