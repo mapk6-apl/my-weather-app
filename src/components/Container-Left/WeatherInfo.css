@@ -18,8 +18,8 @@
     display: flex;
     flex-direction: row;
     width: 95%;
-    height: 85vh;
-    margin: 7.5vh auto;
+    height: calc(100vh - 72px);
+    margin: 0 auto;
     gap: 24px;
     box-sizing: border-box;
 }
@@ -411,18 +411,122 @@
     margin-top: -20%;
 }
 
+@media (max-width: 1024px) {
+    .main-weather-screen {
+        height: auto;
+        overflow-y: auto; 
+    }
+ 
+    .left-elements h1 {
+        font-size: 72px;
+    }
+ 
+    .message {
+        left: auto;
+        right: 20px;
+        width: 160px;
+    }
+ 
+    .screen-4-mid-content {
+        gap: 40px;
+    }
+ 
+    .screen-4-top-content {
+        gap: 60px;
+    }
+}
+ 
 
-
-/* #vertical-divider {
-    border-right: 2px solid red;
-} */
-
-/* .screen-4-bottom-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    flex-wrap: nowrap;
- } */
+@media (max-width: 768px) {
+    .main-weather-screen {
+        flex-direction: column;
+        width: 92%;
+    }
+ 
+    .left-screens,
+    .right-screens {
+        width: 100%;
+    }
+ 
+    .screen-1 {
+        height: 260px;
+    }
+ 
+    .left-elements h1 {
+        font-size: 56px;
+    }
+ 
+    .message {
+        display: none;
+    }
+ 
+    .screen-2 {
+        overflow-x: auto; 
+    }
+ 
+    .screen-3 {
+        flex-wrap: wrap;
+        row-gap: 12px;
+    }
+ 
+    .daily-forecast {
+        width: 90px;
+    }
+ 
+    #line-graph {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+ 
+@media (max-width: 480px) {
+    .nav-main {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+ 
+    .right-nav-content {
+        gap: 10px;
+    }
+ 
+    #download-app-btn,
+    #enable-alerts-btn,
+    #test-alert-btn {
+        display: none;
+    }
+ 
+    .left-elements h1 {
+        font-size: 44px;
+    }
+ 
+    #high, #low {
+        width: 60px;
+        font-size: 8px;
+    }
+ 
+    .screen-4-top-content {
+        gap: 30px;
+    }
+ 
+    .screen-4-mid-content {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+ 
+    .humidity, .wind, .pressure {
+        padding: 4px 2px;
+        gap: 6px;
+    }
+ 
+    .now-hourly-forecast,
+    .hourly-forecast {
+        width: 48px;
+    }
+ 
+    .daily-forecast {
+        width: 76px;
+        margin-left: 6px;
+    }
+}
+ 
