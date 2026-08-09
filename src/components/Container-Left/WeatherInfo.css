@@ -417,6 +417,30 @@
     margin-top: -20%;
 }
 
+.forecast-toggle {
+    display: flex;
+    gap: 8px;
+}
+
+.toggle-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.toggle-active {
+    background-color: rgba(255, 255, 255, 0.35);
+    font-weight: bold;
+}
+
 @media (max-width: 1024px) {
     .main-weather-screen {
         height: auto;
