@@ -9,8 +9,9 @@ import lineGraph from '../../assets/line-graph.png'
 import humidityIcon from '../../assets/humidity.png'
 import windIcon from '../../assets/wind.png'
 import meterIcon from '../../assets/meter.png'
+import pinIcon from '../../assets/pin.png'
 
-import {familyFromOwmMain, backgroundForFamily} from '../services/WeatherIcons'
+import { familyFromOwmMain, backgroundForFamily } from '../services/WeatherIcons'
 
 
 
@@ -41,8 +42,9 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
     const [recentSearches, setRecentSearches] = useState<any[]>([]);
     const [showAllRecent, setShowAllRecent] = useState(false);
 
+    const [isDay, setIsDay] = useState(true);
+
     const family = familyFromOwmMain(condition);
-    const isDay = true;
     const background = backgroundForFamily(family, isDay);
 
     const loadWeather = async () => {
@@ -56,6 +58,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
             setPressure(current.pressure);
             setDirection(current.direction);
             setIsDangerous(current.isDangerous);
+            setIsDay(current.isDay);
 
             //saving the search so it shows up in recently searched
             const updatedList = addRecentSearch({
@@ -102,7 +105,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
     return (
         <div className='main-weather-screen'>
             <div className='left-screens'>
-                <div className='screen-1' style={{background: background}}>
+                <div className='screen-1' style={{ background: background }}>
                     <div className='screen-1-elements'>
                         <div className='left-elements'>
                             <Text variant='h1' style={{ color: 'white', marginLeft: '-20px' }}>{temp}&#176;</Text>
@@ -265,7 +268,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                         <Text variant='span' style={{ textAlign: 'left' }}>{wind}</Text>
                         <Text variant='span' style={{ textAlign: 'left' }}>{direction}</Text>
                     </div>
-                    <img src={'pin.png'} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
+                    <img src={pinIcon} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
                 </div>
             </div>
         </div>

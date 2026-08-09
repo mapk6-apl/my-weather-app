@@ -48,7 +48,9 @@
 
 #location-text{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
 }
 
 #location-text h4{
@@ -56,7 +58,8 @@
 }
 
 #location-text p{
-    margin-top: 4px 0 0 0;
+    margin-top: 0;
+    color: rgb(208, 204, 204);
 }
 
 .right-nav-content{

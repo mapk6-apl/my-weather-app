@@ -335,6 +335,12 @@
     padding: 20px 16px;
 }
 
+.screen-5-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 #mid-partly-cloudy-img,
 #mid-thunderstorm-img {
     width: 30px;

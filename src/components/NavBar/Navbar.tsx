@@ -3,6 +3,7 @@ import pinIcon from '../../assets/pin.png'
 import { Text } from '../../components/Text'
 import {searchCities} from '../services/WeatherService'
 import {requestNotificationPermission} from '../services/WeatherAlerts'
+import searchIcon from '../../assets/search.png'
 
 export type NavbarProps = {
     setLat: (latitude: number) => void
@@ -20,6 +21,12 @@ export const Navbar: React.FC<NavbarProps> = ({setLat, setLon, locationName, set
     const [suggestions, setSuggestions] = useState<any[]>([]); /* state variable initialized as empty array; allowing any data type inside it (uses TypeScript syntax) */
     const searchInputRef = useRef<HTMLInputElement>(null) /* creates shortcut to input box in browser */
     const searchSectionRef = useRef<HTMLDivElement>(null);
+
+    const today = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric'
+    });
 
     useEffect(() => {
         const clickOutside = (event: MouseEvent) => {
@@ -76,14 +83,14 @@ export const Navbar: React.FC<NavbarProps> = ({setLat, setLon, locationName, set
             <div className='left-nav-content'>
                 <img src={pinIcon} alt='Location Icon' id='nav-location-icon' />
                 <div id='location-text'>
-                    <Text variant='h4' style={{ color: 'white' }}>{locationName}</Text>
-                    <Text variant='p' style={{ color: 'white' }}>Monday, August 3</Text>
+                    <Text variant='h4' style={{ color: 'white' }}>{locationName},</Text>
+                    <Text variant='p' style={{ color: 'white' }}>{today}</Text>
                 </div>
             </div>
 
             <div className='right-nav-content'>
                 <div className='search-section' ref={searchSectionRef}>
-                    <img src={'search.png'} alt='Search Icon' id='nav-search-icon' onClick={() => toggleSearch(!showSearch)} />
+                    <img src={searchIcon} alt='Search Icon' id='nav-search-icon' onClick={() => toggleSearch(!showSearch)} />
 
                     {showSearch && (
                         <div className='search-input-section'>
