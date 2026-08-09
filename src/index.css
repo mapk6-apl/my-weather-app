@@ -5,3 +5,9 @@ body{
     background-color: rgb(66, 64, 64);
     font-family: sans-serif;
 }
+
+html, body{
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+}
