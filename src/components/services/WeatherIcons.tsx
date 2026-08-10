@@ -1,5 +1,13 @@
 export type ConditionFamily = 'clear' | 'clouds' | 'rain' | 'thunderstorm' | 'snow' | 'fog';
 
+import sunIcon from '../../assets/sun.png'
+import nightIcon from '../../assets/night.png'
+import partlyCloudyIcon from '../../assets/partly-cloudy.png'
+import cloudyIcon from '../../assets/cloudy.png'
+import rainyIcon from '../../assets/rainy.png'
+import snowIcon from '../../assets/snowflake.png'
+import thunderstormIcon from '../../assets/thunderstorm.png'
+
 export const familyFromOwmMain = (main: string): ConditionFamily => {
     if (main === 'Clear') return 'clear';
     if (main === 'Cloud') return 'clouds';
@@ -21,13 +29,13 @@ export const familyFromOpenMeteoCode = (code: number): ConditionFamily => {
 };
 
 export const iconForFamily = (family: ConditionFamily, isDay: boolean): string => {
-    if (family === 'clear') return isDay ? 'sun.png' : 'night.png';
-    if (family === 'clouds') return 'partly-cloudy.png';
-    if (family === 'fog') return 'cloudy.png';
-    if (family === 'rain') return 'rainy.png';
-    if (family === 'snow') return 'rainy.png';
-    if (family === 'thunderstorm') return 'thunderstorm.png';
-    return 'cloudy.png';
+    if (family === 'clear') return isDay ? sunIcon : nightIcon;
+    if (family === 'clouds') return partlyCloudyIcon;
+    if (family === 'fog') return cloudyIcon;
+    if (family === 'rain') return rainyIcon;
+    if (family === 'snow') return snowIcon;
+    if (family === 'thunderstorm') return thunderstormIcon;
+    return cloudyIcon;
 };
 export const backgroundForFamily = (family: ConditionFamily, isDay: boolean): string => {
     if (family === 'clear') {

@@ -43,7 +43,7 @@ export const getCurrentWeather = async (latitude: number, longitude: number) => 
             else if (degree > 135 && degree <= 225) direction = 'South';
             else if (degree > 225 && degree <= 315) direction = 'West';
 
-            const iconCode = weather.weather[0].icon;
+            const iconCode = weather.weather[0].icon; // e.g. "01d" or "01n"
             const isDay = iconCode.endsWith('d');
 
             return {
@@ -87,15 +87,40 @@ export const getForecast = async (latitude: number, longitude: number) => {
                 rainChance: Math.round((item.pop ?? 0) * 100)
             }));
 
-            const middayEntries = list.filter((item: any) => item.dt_txt.includes('12:00:00'));
+            const dailyMap: Record<string, any> = {};
 
-            const daily = middayEntries.map((item: any) => ({
-                day: new Date(item.dt * 1000).toLocaleDateString([], { weekday: 'short' }),
-                high: Math.round(item.main.temp_max),
-                low: Math.round(item.main.temp_min),
-                condition: item.weather[0].main,
-                icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
-                rainChance: Math.round((item.pop ?? 0) * 100)
+            list.forEach((item: any) => {
+                const date = item.dt_txt.split(' ')[0];
+                const isNoon = item.dt_txt.includes('12:00:00');
+
+                if (!dailyMap[date]) {
+                    dailyMap[date] = {
+                        day: new Date(item.dt * 1000).toLocaleDateString([], { weekday: 'short' }),
+                        high: item.main.temp_max,
+                        low: item.main.temp_min,
+                        condition: item.weather[0].main,
+                        icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
+                        rainChance: item.pop ?? 0
+                    };
+                } else {
+                    dailyMap[date].high = Math.max(dailyMap[date].high, item.main.temp_max);
+                    dailyMap[date].low = Math.min(dailyMap[date].low, item.main.temp_min);
+                    dailyMap[date].rainChance = Math.max(dailyMap[date].rainChance, item.pop ?? 0);
+                }
+
+                if (isNoon) {
+                    dailyMap[date].condition = item.weather[0].main;
+                    dailyMap[date].icon = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`;
+                }
+            });
+
+            const daily = Object.values(dailyMap).map((d: any) => ({
+                day: d.day,
+                high: Math.round(d.high),
+                low: Math.round(d.low),
+                condition: d.condition,
+                icon: d.icon,
+                rainChance: Math.round(d.rainChance * 100)
             }));
 
             return { hourly, daily };

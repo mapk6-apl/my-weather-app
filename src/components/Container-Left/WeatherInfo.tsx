@@ -13,8 +13,6 @@ import pinIcon from '../../assets/pin.png'
 
 import { familyFromOwmMain, backgroundForFamily } from '../services/WeatherIcons'
 
-
-
 interface WeatherProps {
     latitude: number;
     longitude: number;
@@ -48,9 +46,10 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
     const background = backgroundForFamily(family, isDay);
 
     const [forecastView, setForecastView] = useState<'hourly' | 'daily'>('hourly');
+    const [units, setUnits] = useState<'metric' | 'imperial'>('metric');
 
     const loadWeather = async () => {
-        const current = await getCurrentWeather(latitude, longitude);
+        const current = await getCurrentWeather(latitude, longitude,);
         if (current) {
             setTemp(`${current.temp}`);
             setCondition(current.condition);
@@ -163,124 +162,124 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                         ))}
                     </div>
                 )}
+            </div>
+
+            <div className='right-screens'>
+                <div className='screen-4'>
+                    <div className='screen-4-top-content'>
+
+                        <div id='4-top-left-items'>
+                            <Text variant='span'>Live Conditions</Text>
+                        </div>
+
+                        <div id='4-top-right-items'>
+                            <img src={rightArrow} alt='Right Arrow' id='right-arrow' />
+                        </div>
+
+                    </div>
+
+                    <div className='screen-4-mid-content'>
+                        <div className='precipitation'>
+                            <img src={topArrow} alt='Top Arrow' id='top-arrow' />
+                            <Text variant='span'>{precipitationChance}%</Text>
+                        </div>
+
+                        <div className='danger-level' style={{ backgroundColor: isDangerous ? undefined : 'rgb(76, 175, 80)' }}>
+                            <Text variant='span'>{isDangerous ? 'Dangerous' : 'Normal'}</Text>
+                        </div>
+                    </div>
+                    <div className='screen-4-line-graph'>
+                        <img src={lineGraph} alt='Precipitation Graph' id='line-graph' />
+                    </div>
+
+                    <hr className='line-divider'></hr>
+
+                    <div className='screen-4-bottom-content'>
+
+                        <div className='humidity'>
+                            <div className='humidity-left-items'>
+                                <img src={humidityIcon} alt='Humidity Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='humidity-icon' />
+                            </div>
+                            <div className='humidity-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>{humidity}</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Humidity</Text>
+                            </div>
+                        </div>
+
+                        <div id='vertical-divider'></div>
+
+                        <div className='wind'>
+                            <div className='wind-left-items'>
+                                <img src={windIcon} alt='Wind Icon' style={{ width: '20px' }} id='wind-icon' />
+                            </div>
+                            <div className='wind-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>{wind}</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Wind</Text>
+                            </div>
+                        </div>
+
+                        <div id='vertical-divider'></div>
+
+                        <div className='pressure'>
+                            <div className='pressure-left-items'>
+                                <img src={meterIcon} alt='Pressure Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='pressure-icon' />
+                            </div>
+                            <div className='pressure-right-items'>
+                                <Text variant='span' style={{ fontSize: '14px' }}>{pressure}</Text>
+                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Pressure</Text>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className='right-screens'>
-                    <div className='screen-4'>
-                        <div className='screen-4-top-content'>
-
-                            <div id='4-top-left-items'>
-                                <Text variant='span'>Live Conditions</Text>
-                            </div>
-
-                            <div id='4-top-right-items'>
+                <div className='screen-5'>
+                    <div className='screen-5-top-content'>
+                        <Text variant='span'>Recently Searched</Text>
+                        {otherSearches.length > 2 && (
+                            <div id='right-5-top-content' onClick={() => setShowAllRecent(!showAllRecent)} style={{ cursor: 'pointer' }}>
+                                <Text variant='span'>See All</Text>
                                 <img src={rightArrow} alt='Right Arrow' id='right-arrow' />
                             </div>
-
-                        </div>
-
-                        <div className='screen-4-mid-content'>
-                            <div className='precipitation'>
-                                <img src={topArrow} alt='Top Arrow' id='top-arrow' />
-                                <Text variant='span'>{precipitationChance}%</Text>
-                            </div>
-
-                            <div className='danger-level' style={{ backgroundColor: isDangerous ? undefined : 'rgb(76, 175, 80)' }}>
-                                <Text variant='span'>{isDangerous ? 'Dangerous' : 'Normal'}</Text>
-                            </div>
-                        </div>
-                        <div className='screen-4-line-graph'>
-                            <img src={lineGraph} alt='Precipitation Graph' id='line-graph' />
-                        </div>
-
-                        <hr className='line-divider'></hr>
-
-                        <div className='screen-4-bottom-content'>
-
-                            <div className='humidity'>
-                                <div className='humidity-left-items'>
-                                    <img src={humidityIcon} alt='Humidity Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='humidity-icon' />
-                                </div>
-                                <div className='humidity-right-items'>
-                                    <Text variant='span' style={{ fontSize: '14px' }}>{humidity}</Text>
-                                    <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Humidity</Text>
-                                </div>
-                            </div>
-
-                            <div id='vertical-divider'></div>
-
-                            <div className='wind'>
-                                <div className='wind-left-items'>
-                                    <img src={windIcon} alt='Wind Icon' style={{ width: '20px' }} id='wind-icon' />
-                                </div>
-                                <div className='wind-right-items'>
-                                    <Text variant='span' style={{ fontSize: '14px' }}>{wind}</Text>
-                                    <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Wind</Text>
-                                </div>
-                            </div>
-
-                            <div id='vertical-divider'></div>
-
-                            <div className='pressure'>
-                                <div className='pressure-left-items'>
-                                    <img src={meterIcon} alt='Pressure Icon' style={{ filter: 'invert(63%)', width: '20px' }} id='pressure-icon' />
-                                </div>
-                                <div className='pressure-right-items'>
-                                    <Text variant='span' style={{ fontSize: '14px' }}>{pressure}</Text>
-                                    <Text variant='span' style={{ color: 'rgb(208, 204, 204)', fontSize: '12px' }}>Pressure</Text>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
 
-                    <div className='screen-5'>
-                        <div className='screen-5-top-content'>
-                            <Text variant='span'>Recently Searched</Text>
-                            {otherSearches.length > 2 && (
-                                <div id='right-5-top-content' onClick={() => setShowAllRecent(!showAllRecent)} style={{ cursor: 'pointer' }}>
-                                    <Text variant='span'>See All</Text>
-                                    <img src={rightArrow} alt='Right Arrow' id='right-arrow' />
-                                </div>
-                            )}
-                        </div>
+                    {/* allows scrolling internally instead of making the whole page scroll when expanded */}
 
-                        {/* allows scrolling internally instead of making the whole page scroll when expanded */}
-
-                        <div className='screen-5-list' style={{ maxHeight: showAllRecent ? '260px' : 'none', overflowY: showAllRecent ? 'auto' : 'visible' }}>
-                            {visibleSearches.length === 0 && (
-                                <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>No other locations searched yet.</Text>
-                            )}
-                            {visibleSearches.map((search, index) => (
-                                <div key={index} className={index === 0 ? 'screen-5-mid-content' : 'screen-5-bottom-content'}>
-                                    <div id='icon-text'>
-                                        <div id='mid-content-icon'>
-                                            <img src={search.icon} alt={`${search.condition} icon`} id='mid-partly-cloudy-img' />
-                                        </div>
-                                        <div id='mid-content-text'>
-                                            <Text variant='span'>{search.fullName}</Text>
-                                            <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>{search.condition}</Text>
-                                        </div>
+                    <div className='screen-5-list' style={{ maxHeight: showAllRecent ? '260px' : 'none', overflowY: showAllRecent ? 'auto' : 'visible' }}>
+                        {visibleSearches.length === 0 && (
+                            <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>No other locations searched yet.</Text>
+                        )}
+                        {visibleSearches.map((search, index) => (
+                            <div key={index} className={index === 0 ? 'screen-5-mid-content' : 'screen-5-bottom-content'}>
+                                <div id='icon-text'>
+                                    <div id='mid-content-icon'>
+                                        <img src={search.icon} alt={`${search.condition} icon`} id='mid-partly-cloudy-img' />
                                     </div>
-
-                                    <div id='mid-content-temp'>
-                                        <Text variant='span' style={{ fontSize: '30px' }}>{search.temp}&#176;</Text>
+                                    <div id='mid-content-text'>
+                                        <Text variant='span'>{search.fullName}</Text>
+                                        <Text variant='span' style={{ color: 'rgb(208, 204, 204)' }}>{search.condition}</Text>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
 
-
-                    <div className='screen-6'>
-                        <Text variant='span' style={{ textAlign: 'left' }}>Wind Map</Text>
-                        <div className='wind-speed'>
-                            <Text variant='span' style={{ textAlign: 'left' }}>{wind}</Text>
-                            <Text variant='span' style={{ textAlign: 'left' }}>{direction}</Text>
-                        </div>
-                        <img src={pinIcon} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
+                                <div id='mid-content-temp'>
+                                    <Text variant='span' style={{ fontSize: '30px' }}>{search.temp}&#176;</Text>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
+
+
+                <div className='screen-6'>
+                    <Text variant='span' style={{ textAlign: 'left' }}>Wind Map</Text>
+                    <div className='wind-speed'>
+                        <Text variant='span' style={{ textAlign: 'left' }}>{wind}</Text>
+                        <Text variant='span' style={{ textAlign: 'left' }}>{direction}</Text>
+                    </div>
+                    <img src={pinIcon} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
+                </div>
             </div>
+        </div>
     );
 }
 
