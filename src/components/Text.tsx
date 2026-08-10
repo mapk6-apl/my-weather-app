@@ -5,9 +5,10 @@ type TextProps = {
     children: React.ReactNode
     style?: React.CSSProperties
     className?: string
+    onClick?: () => void
 }
 
-export const Text: React.FC<TextProps> = ({variant, children, style, className}) => {
+export const Text: React.FC<TextProps> = ({variant, children, style, className, onClick}) => {
     if (variant === 'h1') {
         return(
             <h1 style={style} className={className} >{children}</h1>
