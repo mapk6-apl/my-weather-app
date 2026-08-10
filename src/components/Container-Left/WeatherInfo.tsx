@@ -1,5 +1,5 @@
 import { Text } from '../../components/Text'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getCurrentWeather, getForecast } from '../services/WeatherService'
 import { getRecentSearches, addRecentSearch } from '../services/RecentSearches'
 import { sendWeatherAlert } from '../services/WeatherAlerts'
@@ -46,7 +46,6 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
     const background = backgroundForFamily(family, isDay);
 
     const [forecastView, setForecastView] = useState<'hourly' | 'daily'>('hourly');
-    const [units, setUnits] = useState<'metric' | 'imperial'>('metric');
 
     const loadWeather = async () => {
         const current = await getCurrentWeather(latitude, longitude,);

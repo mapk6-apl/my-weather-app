@@ -77,10 +77,6 @@ export const Navbar: React.FC<NavbarProps> = ({ setLat, setLon, locationName, se
         setLon(cityObject.longitude);
     }
 
-    const handleEnableAlerts = async () => {
-        await requestNotificationPermission();
-    };
-
     return (
         <div className='nav-main'>
             <div className='left-nav-content'>
