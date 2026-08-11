@@ -384,7 +384,7 @@
 }
 
 .screen-6 {
-    background-image: url('./public/wind-pattern.png');
+    background-image: url('../../assets/wind-pattern.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
