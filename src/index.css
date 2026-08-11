@@ -1,9 +1,16 @@
 @import './components/NavBar/Navbar.css';
 @import './components/Container-Left/WeatherInfo.css';
 
+:root[data-theme='dark'] {
+    --page-bg: rgb(18, 154, 228);
+}
+
+:root[data-theme='light'] {
+    --page-bg: rgb(20, 45, 52);
+}
 
 body{
-    background-color: rgb(85, 137, 147);
+    background-color: var(--page-bg);
     font-family: sans-serif;
 }
 

@@ -48,7 +48,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
     const [forecastView, setForecastView] = useState<'hourly' | 'daily'>('hourly');
 
     const loadWeather = async () => {
-        const current = await getCurrentWeather(latitude, longitude,);
+        const current = await getCurrentWeather(latitude, longitude);
         if (current) {
             setTemp(`${current.temp}`);
             setCondition(current.condition);

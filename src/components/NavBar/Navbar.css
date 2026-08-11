@@ -6,8 +6,7 @@
 #nav-search-icon{
     width: 15px;
     height: 15px;
-    filter: invert();
-    background-color: grey;
+    background-color: aliceblue;
     border-radius: 50%;
     padding: 6px;
     cursor: pointer;
@@ -28,8 +27,8 @@
 #download-app-btn{
     display: inline-flex;
     align-items: center;
-    background-color: grey;
-    color: white;
+    background-color: aliceblue;
+    color: rgb(41, 41, 41);
     padding: 8px 16px;
     border-radius: 18px;
     text-decoration: none;
@@ -69,9 +68,8 @@
 }
 
 .search-bar{
-    background-color: grey;
+    background-color: aliceblue;
     border-radius: 14px;
-    background-color: grey;
     border: none;
     padding: 8px 12px;
     color: white;
@@ -117,4 +115,12 @@
 
 .suggestion-item:hover{
     color: cadetblue;
+}
+
+.theme-toggle-btn{
+    background-color: aliceblue;
+    border: none;
+    width: 50px;
+    height: 30px;
+    border-radius: 50px;
 }
