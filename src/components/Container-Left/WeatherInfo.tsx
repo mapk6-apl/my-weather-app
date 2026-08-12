@@ -125,10 +125,6 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                                 </div>
                             </div>
                         </div>
-
-                        <div className='message'>
-                            <Text variant='span' className={'message-container'}>With real time data and <br></br> advanced technology, <br></br> we provide reliable <br></br>forecasts for any <br></br>location around <br></br>the world.</Text>
-                        </div>
                     </div>
                 </div>
 
