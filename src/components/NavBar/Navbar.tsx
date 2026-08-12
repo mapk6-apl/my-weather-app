@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react'
 import pinIcon from '../../assets/pin.png'
 import { Text } from '../../components/Text'
 import { searchCities } from '../services/WeatherService'
-import { requestNotificationPermission } from '../services/WeatherAlerts'
 import searchIcon from '../../assets/search.png'
 import {ButtonComponent} from '../../components/ButtonComponent'
+import lightMode from '../../assets/light-mode.png'
+import darkMode from '../../assets/dark-mode.png'
 
 export type NavbarProps = {
     setLat: (latitude: number) => void
@@ -17,7 +18,6 @@ export type NavbarProps = {
 
 export const Navbar: React.FC<NavbarProps> = ({ setLat, setLon, locationName, setLocationName, isDark, setIsDark }) => {
 
-    const downloadURL = "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apps.apple.com/us/app/weather/id1069513131&ved=2ahUKEwjzyI_ZgP2VAxVZzwIHHZg6E0gQFnoECCAQAQ&usg=AOvVaw23Q0okt8s3y18BrV6CAjPh"
     const [showSearch, toggleSearch] = useState(false);
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -108,9 +108,8 @@ export const Navbar: React.FC<NavbarProps> = ({ setLat, setLon, locationName, se
 
                 </div>
                 <ButtonComponent className='theme-toggle-btn' onClick={() => setIsDark(!isDark)} >
-                    {isDark ? '☀️' : '🌙'}
+                    {isDark ? <img src={darkMode} alt='Dark Mode Icon' id='dark-mode-icon'/> : <img src={lightMode} alt='Light Mode Icon' id='light-mode-icon'/>}
                 </ButtonComponent>
-                <a href={downloadURL} target='_blank' rel='noopener noreferrer' id='download-app-btn'>Download App</a>
             </div>
         </div>
     )

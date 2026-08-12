@@ -24,19 +24,6 @@
     box-sizing: border-box;
 }
 
-#download-app-btn{
-    display: inline-flex;
-    align-items: center;
-    background-color: aliceblue;
-    color: rgb(41, 41, 41);
-    padding: 8px 16px;
-    border-radius: 18px;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
 .left-nav-content{
     display: flex;
     flex-direction: row;
@@ -49,10 +36,6 @@
     flex-direction: row;
     align-items: baseline;
     gap: 15px;
-}
-
-#location-text h4{
-    
 }
 
 #location-text p{
@@ -123,4 +106,8 @@
     width: 50px;
     height: 30px;
     border-radius: 50px;
+}
+
+#light-mode-icon, #dark-mode-icon{
+    width: 20px;
 }
