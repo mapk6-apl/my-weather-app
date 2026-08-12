@@ -20,7 +20,7 @@ export const addRecentSearch = (entry: {
     icon: string;
 }) => {
     const existing = getRecentSearches().filter((search: any) => search.fullName !== entry.fullName);
-    const updated = [entry, ...existing].slice(0, MAX_RECENT); //the ... is a spread operator creates a new array, with the entry items being the first, then unpacks the existing items too and adds to that array too
+    const updated = [entry, ...existing].slice(0, MAX_RECENT); //the ... is a spread operator that creates a new array, with the entry items being the first, then unpacks the existing items too and adds to that array too
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     return updated;
 };
