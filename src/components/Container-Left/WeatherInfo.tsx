@@ -138,7 +138,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                         {hourlyForecast.map((hour, index) => (
                             <div key={index} className={index === 0 ? 'now-hourly-forecast' : 'hourly-forecast'} >
                                 <Text variant='p'>{hour.time}</Text>
-                                {hour.rainChance > 15 && <Text variant='p' className='rain-chance'>{hour.rainChance}%</Text>}
+                                {hour.rainChance > 15 && <Text variant='p' className='rain-chance-1'>{hour.rainChance}%</Text>}
                                 <img src={hour.icon} alt={`${hour.condition} icon`} id='cloudy-img' />
                                 <Text variant='p'>{hour.temp}&#176;</Text>
                             </div>
@@ -150,7 +150,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                             <div key={index} className='daily-forecast'>
                                 <Text variant='p' style={{ fontSize: '16px' }}>{day.day}</Text>
                                 <img src={day.icon} alt={`${day.condition} icon`} id='sunny-img' />
-                                {day.rainChance > 15 && <Text variant='p' className='rain-chance'>{day.rainChance}%</Text>}
+                                {day.rainChance > 15 && <Text variant='p' className='rain-chance-2'>{day.rainChance}%</Text>}
                                 <Text variant='p' style={{ fontSize: '20px' }}>{day.high}&#176;</Text>
                                 <Text variant='p' style={{ color: 'darkgray' }}>{day.low}&#176;</Text>
                             </div>
@@ -268,10 +268,8 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                 <div className='screen-6'>
                     <Text variant='span' style={{ textAlign: 'left' }}>Wind Map</Text>
                     <div className='wind-speed'>
-                        <Text variant='span' style={{ textAlign: 'left' }}>{wind}</Text>
-                        <Text variant='span' style={{ textAlign: 'left' }}>{direction}</Text>
+                        <iframe width="100%" height="100%" src={`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=5&overlay=wind&product=ecmwf&level=surface&lat=${latitude}&lon=${longitude}&pressure=true&message=true`} style={{ borderRadius: '18px' }} title="Wind Map"></iframe>
                     </div>
-                    <img src={pinIcon} style={{ filter: 'invert(1)' }} alt='Location Pin Icon' id='location-pin' />
                 </div>
             </div>
         </div>
