@@ -24,3 +24,11 @@ export const addRecentSearch = (entry: {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     return updated;
 };
+
+export const clearRecentSearches = () => {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.warn('Failed to clear recent searches:', error)
+  }
+};

@@ -142,7 +142,6 @@
     /* made the screen take 100% of 75%, aligned with 1st screen */
 }
 
-.now-hourly-forecast,
 .hourly-forecast {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;

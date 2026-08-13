@@ -1,7 +1,7 @@
 import { Text } from '../../components/Text'
 import { useState, useEffect } from 'react'
 import { getCurrentWeather, getForecast } from '../services/WeatherService'
-import { getRecentSearches, addRecentSearch } from '../services/RecentSearches'
+import { getRecentSearches, addRecentSearch, clearRecentSearches } from '../services/RecentSearches'
 import { sendWeatherAlert } from '../services/WeatherAlerts'
 import rightArrow from '../../assets/right.png'
 import topArrow from '../../assets/top.png'
@@ -76,6 +76,11 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
         }
 
         const forecast = await getForecast(latitude, longitude);
+
+        if (forecast.hourly.length > 0 && current) {
+            forecast.hourly[0] = { ...forecast.hourly[0], temp: current.temp }
+        }
+
         setHourlyForecast(forecast.hourly);
         setDailyForecast(forecast.daily);
 
@@ -136,7 +141,7 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                 {forecastView === 'hourly' ? (
                     <div className='screen-2'>
                         {hourlyForecast.map((hour, index) => (
-                            <div key={index} className={index === 0 ? 'now-hourly-forecast' : 'hourly-forecast'} >
+                            <div key={index} className='hourly-forecast' >
                                 <Text variant='p'>{hour.time}</Text>
                                 {hour.rainChance > 15 && <Text variant='p' className='rain-chance-1'>{hour.rainChance}%</Text>}
                                 <img src={hour.icon} alt={`${hour.condition} icon`} id='cloudy-img' />
@@ -235,6 +240,9 @@ export const WeatherInfo: React.FC<WeatherProps> = ({ latitude, longitude, locat
                                 <Text variant='span'>See All</Text>
                                 <img src={rightArrow} alt='Right Arrow' id='right-arrow' />
                             </div>
+                        )}
+                        {otherSearches.length > 0 && (
+                            <Text variant='span' style={{ cursor: 'pointer' }} onClick={() => { clearRecentSearches(); setRecentSearches([]); }}>Clear All</Text>
                         )}
                     </div>
 
